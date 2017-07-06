@@ -9,10 +9,10 @@ User.findAll = () => {
     SELECT * FROM users`)
 }
 
-User.findOne = (user) => {
-  return db.one(`
-    SELECT fname, lname, username, photo
-    FROM users
-    WHERE id = $1
-    `, [user]);
-}
+// User.findOne = (user) => {
+//   return db.one(`
+//     SELECT fname, lname, username, photo
+//     FROM users
+//     WHERE id = $1
+//     `, [user]);
+// }
