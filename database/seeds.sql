@@ -1,5 +1,7 @@
 -- This is the seeds file to populate the database with test data for production.
 
+\c sonic_gate_db
+
 INSERT INTO users (
   fname,
   lname,

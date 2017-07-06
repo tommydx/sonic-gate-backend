@@ -3,7 +3,7 @@
 DROP DATABASE IF EXISTS sonic_gate_db;
 CREATE DATABASE sonic_gate_db;
 
-\c been_there_db
+\c sonic_gate_db
 
 DROP TABLE IF EXISTS users CASCADE;
 
