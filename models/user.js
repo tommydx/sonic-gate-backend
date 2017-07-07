@@ -16,3 +16,4 @@ User.findAll = () => {
 //     WHERE id = $1
 //     `, [user]);
 // }
+module.exports = User;
