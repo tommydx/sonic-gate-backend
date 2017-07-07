@@ -1,5 +1,5 @@
 const pgp = require('pg-promise')({});
-// remember that localhost:5432 is the port for PSQL DB stuff
+// localhost:5432 is the port for retrieving PSQL DB data in the .env file
 const config = {
   host: process.env.DB_HOST,
   database: process.env.DB_NAME,

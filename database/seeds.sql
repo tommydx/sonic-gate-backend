@@ -1,5 +1,6 @@
 -- This is the seeds file to populate the database with test data for production.
 
+ -- The \c sonic_gate_db line connects this to the database when executing the seed in the Terminal
 \c sonic_gate_db
 
 INSERT INTO users (

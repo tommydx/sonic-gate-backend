@@ -4,6 +4,7 @@ require('dotenv').config();
 
 const express = require('express');
 const app = express();
+// Don't need the .js extension because NODE knows it's JS
 const userController = require('./controllers/user-controller');
 
 const bodyParser = require('body-parser');
