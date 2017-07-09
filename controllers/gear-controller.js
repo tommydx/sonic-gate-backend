@@ -7,8 +7,8 @@ const Gear = require('../models/gear');
 
 // Used the router.route function here because I removed the index.js and combined the functionality.
 
-router.route('/')
-  .all(AuthService.restrict)
+// router.route('/')
+//   .all(AuthService.restrict)
 
 router.route('/')
   .get((req, res) => {
@@ -21,18 +21,18 @@ router.route('/')
       res.status(400)
       .json(err);
     });
+  })
+  .post((req, res) => {
+    Gear.create(req.body.gear, req.params.user_id)
+    .then((gear) => {
+      res.status(201)
+      .json(gear);
+    })
+    .catch((err) => {
+      res.status(400)
+      .json(err);
+    });
   });
-  // .post((req, res) => {
-  //   Gear.create(req.body.gear, req.params.user_id)
-  //   .then((gear) => {
-  //     res.status(201)
-  //     .json(gear);
-  //   })
-  //   .catch((err) => {
-  //     res.status(400)
-  //     .json(err);
-  //   });
-  // });
 
   router.route('/:id')
     .get((req, res) => {

@@ -5,8 +5,9 @@ const AuthService = require("../services/auth");
 const User = require('../models/user');
 
 // Used the router.route function here because I removed the index.js and combined the functionality.
-router.route('/')
-  .all(AuthService.restrict)
+
+// router.route('/')
+//   .all(AuthService.restrict)
 
 router.route('/')
   .get((req, res) => {

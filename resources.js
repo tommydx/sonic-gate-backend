@@ -5,9 +5,9 @@ router.use(
   require('./controllers/user-controller')
 );
 
-// router.use(
-//   '/users/:user_id/gear',
-//   require('./controllers/gear-controller')
-// )
+router.use(
+  '/users/:user_id/gear',
+  require('./controllers/gear-controller')
+)
 
 module.exports = router;
