@@ -4,11 +4,13 @@
   "description": "back end routes for sonic gate app",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",
     "cors": "^2.8.3",
     "dotenv": "^4.0.0",
     "express": "^4.15.3",
+    "jsonwebtoken": "^7.4.1",
     "mocha": "^3.4.2",
     "pg-promise": "^6.3.1",
     "supertest": "^3.0.0"

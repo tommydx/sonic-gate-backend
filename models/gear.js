@@ -22,7 +22,7 @@ Gear.create = (gear, user_id) => {
     ]);
 }
 
-Gear.findById = (user_id, gear_id) => {
+Gear.findGearById = (user_id, gear_id) => {
   return db.oneOrNone(`
     SELECT * FROM gear
     WHERE user_id = $1
