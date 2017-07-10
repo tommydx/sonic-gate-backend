@@ -14,6 +14,7 @@ describe('Users Resource', () => {
   let jwToken;
 
   before((done) => {
+    JwtSetup()
     .then((token) => {
       jwToken = token;
       done();

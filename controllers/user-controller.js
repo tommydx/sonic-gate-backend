@@ -7,6 +7,7 @@ const User = require('../models/user');
 // Used the router.route function here because I removed the index.js and combined the functionality.
 
 router.route('/:id')
+//.all(AuthService.restrict)
   .get((req, res) => {
     User.findOne(req.params.id)
     .then((user) => {
@@ -18,7 +19,7 @@ router.route('/:id')
       .json(err);
     });
   })
-  .update((req, res) =>{
+  .put((req, res) => {
     User.update(req.body.user, req.params.id)
     .then(() => {
       res.sendStatus(200);
@@ -28,8 +29,9 @@ router.route('/:id')
       .json(err);
     });
   })
+  // .destroy is convention for routing from controller's index.js to the controller.js file which have been merged into one file here - must have the HTTP delete request to route properly
   .delete((req, res) => {
-    User.delete(req.params.id)
+    User.destroy(req.params.id)
     .then(() => {
       res.sendStatus(200);
     })
@@ -40,7 +42,7 @@ router.route('/:id')
   });
 
 router.route('/')
-  .all(AuthService.restrict)
+  // .all(AuthService.restrict)
   .get((req, res) => {
     User.findAll()
     .then((user) => {

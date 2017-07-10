@@ -8,7 +8,7 @@ const Gear = require('../models/gear');
 // Used the router.route function here because I removed the index.js and combined the functionality.
 
 router.route('/:id')
-  .all(AuthService.restrict)
+  // .all(AuthService.restrict)
   .get((req, res) => {
   Gear.findGearById(req.params.user_id, req.params.id)
   .then((gear) => {
@@ -22,7 +22,7 @@ router.route('/:id')
 });
 
 router.route('/')
-  .all(AuthService.restrict)
+  // .all(AuthService.restrict)
   .get((req, res) => {
     Gear.findAll(req.params.user_id)
     .then((gear) => {

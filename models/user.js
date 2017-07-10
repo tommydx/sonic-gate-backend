@@ -27,6 +27,33 @@ User.create = (user) => {
     `, [user.fname, user.lname, user.username, user.password, user.email, user.phone_number, user.address, user.photo]);
 }
 
+User.update = (user, id) => {
+  return db.none(`
+    UPDATE users SET
+    fname = $1,
+    lname = $2,
+    username = $3,
+    password = $4,
+    email = $5,
+    phone_number = $6,
+    address = $7,
+    photo = $8
+    WHERE id = $9;
+    `, [user.fname, user.lname, user.username, user.password, user.email, user.phone_number, user.address, user.photo, id]);
+}
 
+User.findByEmail = (user) => {
+  return db.oneOrNone(`
+    SELECT * FROM users
+    WHERE email = $1
+    `, [user.email]);
+}
+
+User.destroy = (id) => {
+  return db.none(`
+    DELETE FROM users
+    WHERE id = $1
+    `, [id]);
+}
 
 module.exports = User;
