@@ -51,10 +51,10 @@ describe('Users Resource', () => {
     request(app)
       .get(`/users/${userRecord.id}`)
       .set({
-        "Authorization"; jwToken
+        "Authorization": jwToken
       })
       .end((err, res) => {
-        expect(res.status.to.eq(200);
+        expect(res.status.to.eq(200));
         expect(res.body).to.be.an('object');
         done();
       });
