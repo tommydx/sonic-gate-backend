@@ -3,9 +3,13 @@ const router = express.Router({mergeParams: true});
 const AuthService = require("../services/auth");
 
 const Gear = require('../models/gear');
+const User = require('../models/user');
 
 
 // Used the router.route function here because I removed the index.js and combined the functionality.
+
+//  this is what my url look like here
+// /users/:user_id/gear
 
 router.route('/:id')
   // .all(AuthService.restrict)
@@ -19,18 +23,54 @@ router.route('/:id')
     res.status(400)
     .json(err);
   });
-});
+})
+.put((req, res) => {
+  console.log('inside put /users/:id/gear/:gear_id');
+  Gear.update(req.body.gear, req.params.id)
+  .then((gear) => {
+    console.log('got some gear back!!',gear)
+    res.sendStatus(200)
+    .json(gear);
+  })
+  .catch((err) => {
+    console.log(err);
+    res.status(400)
+    .json(err);
+  });
+})
+.delete((req, res) => {
+  Gear.destroy(req.params.id)
+  .then(() => {
+    res.sendStatus(200);
+  })
+  .catch((err) => {
+    res.status(400)
+    .json(err);
+  });
+})
 
+// users/:id/gear
 router.route('/')
   // .all(AuthService.restrict)
   .get((req, res) => {
-    Gear.findAll(req.params.user_id)
-    .then((gear) => {
-      res.status(200)
-      .json(gear);
+    User.findOne(req.params.user_id)
+    .then((user) => {;
+      const objResp = {};
+      objResp.user = user;
+      console.log('the new thing --> ', objResp)
+      Gear.findAllByUserId(req.params.user_id)
+      .then((gear) => {
+        objResp.gear = gear;
+        res.status(200)
+        .json(objResp);
+      })
+      .catch((err) => {
+        res.status(400)
+        .json(err);
+      });
     })
     .catch((err) => {
-      res.status(400)
+      res.status(401)
       .json(err);
     });
   })
