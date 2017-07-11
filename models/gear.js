@@ -30,23 +30,23 @@ Gear.create = (gear, user_id) => {
     ]);
 }
 
-Gear.update = (gear, id) => {
+Gear.update = (gear, gear_id) => {
   //  console.log('inside Gear update', gear, id)
-  return db.one(`
+  return db.oneOrNone(`
     UPDATE gear SET
     name = $1,
     item_category = $2,
     item = $3,
     manufacturer = $4,
     year = $5,
-    serial_number $6,
+    serial_number = $6,
     condition = $7,
     description = $8,
     photo_1 = $9,
     photo_2 = $10,
     photo_3 = $11
     WHERE id = $12;
-    `, [gear.name, gear.item_category, gear.item, gear.manufacturer, gear.year, gear.serial_number, gear.condition, gear.description, gear.photo_1, gear.photo_2, gear.photo_3, id
+    `, [gear.name, gear.item_category, gear.item, gear.manufacturer, gear.year, gear.serial_number, gear.condition, gear.description, gear.photo_1, gear.photo_2, gear.photo_3, gear_id
     ]);
 }
 
