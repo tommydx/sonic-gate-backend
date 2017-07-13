@@ -4,6 +4,7 @@
   "description": "back end routes for sonic gate app",
   "main": "index.js",
   "dependencies": {
+    "axios": "^0.16.2",
     "bcrypt": "^1.0.2",
     "body-parser": "^1.17.2",
     "chai": "^4.0.2",
