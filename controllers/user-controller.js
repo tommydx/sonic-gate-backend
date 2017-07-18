@@ -1,13 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const AuthService = require("../services/auth");
+// const AuthService = require("../services/auth");
+const bcrypt = require('bcrypt');
 
 const User = require('../models/user');
 
 // Used the router.route function here because I removed the index.js and combined the functionality.
 
 router.route('/:id')
-//.all(AuthService.restrict)
+// .all(AuthService.restrict)
   .get((req, res) => {
     User.findOne(req.params.id)
     .then((user) => {
@@ -29,7 +30,7 @@ router.route('/:id')
       .json(err);
     });
   })
-  // .destroy is convention for routing from controller's index.js to the controller.js file which have been merged into one file here - must have the HTTP delete request to route properly
+  // .destroy is convention for routing from controller's index.js to the controller.js file which have been merged into one file here - must have the HTTP * delete * request to route properly
   .delete((req, res) => {
     User.destroy(req.params.id)
     .then(() => {

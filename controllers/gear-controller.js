@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router({mergeParams: true});
-const AuthService = require("../services/auth");
+// const AuthService = require("../services/auth");
 
 const Gear = require('../models/gear');
 const User = require('../models/user');
