@@ -13,6 +13,10 @@ app.use(bodyParser.json());
 const cors = require('cors');
 app.use(cors());
 
+// Morgan logs all network requests
+const morgan = require('morgan');
+app.use(morgan('dev'))
+
 app.get('/', (req, res) => {
   res.send('this works');
 })
@@ -20,7 +24,7 @@ app.get('/', (req, res) => {
 // app.use('/user', userController);
 app.use(require("./resources"));
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

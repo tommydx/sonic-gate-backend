@@ -67,6 +67,25 @@ router.route('/')
     });
   });
 
+router.route('/login')
+  .post((req, res) => {
+    User.findByEmail(req.body.user)
+    .then((user) => {
+      // if (user) {
+      //   if (bcrypt.compareSync(req.body.user.password, user.password)) {
+      //     user.password = null;
+      //   }
+      // }
+      res.status(200)
+      .json(user);
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(400)
+      .json(err);
+    });
+  });
+
 // Export the router here instead of the controller because the index.js file was combined in this file rather than have everything split between 2 files. See Project 3 Been There Done That for reference routing with controller and index.js
 
 module.exports = router;
