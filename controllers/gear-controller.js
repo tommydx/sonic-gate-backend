@@ -4,12 +4,8 @@ const router = express.Router({mergeParams: true});
 
 const Gear = require('../models/gear');
 const User = require('../models/user');
-
-
 // Used the router.route function here because I removed the index.js and combined the functionality.
-
-//  this is what my url look like here
-// /users/:user_id/gear
+// This is what the url looks like here: /users/:user_id/gear
 
 router.route('/:gear_id')
   // .all(AuthService.restrict)
@@ -17,7 +13,7 @@ router.route('/:gear_id')
   console.log(req.params.gear_id);
   Gear.update(req.body.gear, req.params.gear_id)
   .then((gear) => {
-    // console.log('got some gear back!!', gear)
+    // console.log('where is my gear', gear)
     // res.sendStatus also renders on top of setting the status code so it will conflict with the .json(gear) render throwing an error even though the functionality remains in tact
     res.status(200)
     .json(gear);
