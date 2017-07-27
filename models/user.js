@@ -11,7 +11,7 @@ User.findAll = () => {
 
 User.findOne = (user) => {
   return db.one(`
-    SELECT fname, lname, username, photo
+    SELECT fname, lname, username, email, password, phone_number, address, photo
     FROM users
     WHERE id = $1
     `, [user]);
